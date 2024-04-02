@@ -152,7 +152,7 @@ class CloudScraper(Session):
         super(CloudScraper, self).__init__(*args, **kwargs)
 
         # pylint: disable=E0203
-        if "requests" in self.headers["User-Agent"]:
+        if "niquests" in self.headers["User-Agent"]:
             # ------------------------------------------------------------------------------- #
             # Set a random User-Agent if no custom User-Agent has been set
             # ------------------------------------------------------------------------------- #
@@ -434,7 +434,7 @@ class AsyncCloudScraper(AsyncSession):
         super(AsyncCloudScraper, self).__init__(*args, **kwargs)
 
         # pylint: disable=E0203
-        if "requests" in self.headers["User-Agent"]:
+        if "niquests" in self.headers["User-Agent"]:
             # ------------------------------------------------------------------------------- #
             # Set a random User-Agent if no custom User-Agent has been set
             # ------------------------------------------------------------------------------- #
