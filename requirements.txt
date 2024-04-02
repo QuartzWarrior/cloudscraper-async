@@ -1,4 +1,6 @@
 # Production
-requests >= 2.9.2
-requests_toolbelt >= 0.9.1
+niquests
 pyparsing >= 2.4.7
+brotli
+polling2
+requests_toolbelt

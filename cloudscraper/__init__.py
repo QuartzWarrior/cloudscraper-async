@@ -1,12 +1,12 @@
 # ------------------------------------------------------------------------------- #
 
 import logging
-import requests
+import urllib3
 import sys
 import ssl
 
-from requests.adapters import HTTPAdapter
-from requests.sessions import Session
+from niquests.adapters import HTTPAdapter
+from niquests.sessions import Session
 from requests_toolbelt.utils import dump
 
 # ------------------------------------------------------------------------------- #
@@ -19,7 +19,7 @@ except ImportError:
 try:
     import copyreg
 except ImportError:
-    import copy_reg as copyreg
+    import copyreg as copyreg
 
 try:
     from urlparse import urlparse
@@ -216,12 +216,12 @@ class CloudScraper(Session):
     # ------------------------------------------------------------------------------- #
 
     def decodeBrotli(self, resp):
-        if requests.packages.urllib3.__version__ < '1.25.1' and resp.headers.get('Content-Encoding') == 'br':
+        if urllib3.__version__ < '1.25.1' and resp.headers.get('Content-Encoding') == 'br':
             if self.allow_brotli and resp._content:
                 resp._content = brotli.decompress(resp.content)
             else:
                 logging.warning(
-                    f'You\'re running urllib3 {requests.packages.urllib3.__version__}, Brotli content detected, '
+                    f'You\'re running urllib3 {urllib3.__version__}, Brotli content detected, '
                     'Which requires manual decompression, '
                     'But option allow_brotli is set to False, '
                     'We will not continue to decompress.'
